@@ -1,5 +1,5 @@
 -- """Создание базы данных"""
-CREATE DATABASE homework_db
+CREATE DATABASE music_db
 
 -- """Создание таблиц с параметрами """
 CREATE TABLE IF NOT EXISTS music_artist
@@ -49,7 +49,7 @@ CREATE TABLE IF NOT EXISTS music_collection
 	date_of_release real NOT NULL);
 	
 -- """Создание таблицы 'многие к многим'"""
-CREATE TABLE IF NOT EXISTS collection_single
+CREATE TABLE IF NOT EXISTS single_collection
 (
 	music_collection_ID int REFERENCES music_collection(music_collection_ID),
 	single_ID int REFERENCES single(single_ID),
