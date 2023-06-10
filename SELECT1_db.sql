@@ -70,6 +70,10 @@ SELECT m.name, COUNT(music_album_id) AS count_single
 FROM music_album AS m
 JOIN single USING(music_album_id)
 GROUP BY m.name
-HAVING COUNT(music_album_id) IN (SELECT MIN(music_album_id) FROM music_album AS m JOIN single USING(music_album_id));
+HAVING COUNT(music_album_id) IN (
+SELECT MIN(a.count_single )
+FROM (SELECT COUNT(music_album_id) AS count_single FROM music_album 
+JOIN single USING(music_album_id)
+GROUP BY music_album_id) AS a);
 
 
