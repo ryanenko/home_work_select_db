@@ -1,3 +1,31 @@
+
+--название и продолжительность самого длительного трека
+SELECT name, duration
+FROM single
+ORDER BY duration DESC, name 
+LIMIT 1;
+
+--название треков, продолжительность которых не менее 3,5 минуты
+SELECT name, duration
+FROM single
+WHERE duration > 3.5;
+
+--названия сборников, вышедших в период с 2018 по 2020 год включительно
+SELECT name, date_of_release
+FROM music_collection
+WHERE date_of_release BETWEEN 2018 AND 2020;
+
+--исполнители, чье имя состоит из 1 слова
+SELECT DISTINCT name
+FROM music_artist
+WHERE (LENGTH(name) - LENGTH(REPLACE(name, ' ', ''))+1) = 1;
+
+--название треков, которые содержат слово "мой"/"my
+SELECT name
+FROM single
+WHERE name LIKE '%мой%' OR name LIKE '%my%'; 
+
+
 --количество исполнителей в каждом жанре
 SELECT mg.name, COUNT(ma.music_artist_id)
 FROM genre_artist 
